@@ -3,7 +3,7 @@ from typing import Union
 from io import BytesIO
 from PIL import Image
 
-def process_image(image: Union[BytesIO, str], writeToFile=None) -> Union[BytesIO, None]:
+def process_image(image: Union[BytesIO, str], writeToFile=None, icon=True) -> Union[BytesIO, None]:
     img = Image.open(image)
     if img.mode != 'RGBA':
         img = img.convert('RGBA')
@@ -14,9 +14,10 @@ def process_image(image: Union[BytesIO, str], writeToFile=None) -> Union[BytesIO
     if width < 2 or height < 2:
         print('Invalid image size.')
 
-    if width > 400 or height > 400:
-        img.thumbnail((400, 400), Image.ANTIALIAS)
-        data = img.load()
+    if icon:
+        if width > 400 or height > 400:
+            img.thumbnail((400, 400), Image.ANTIALIAS)
+            data = img.load()
 
     width, height = img.size
 
