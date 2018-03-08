@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='twitter-iconfix',
-    version='0.1.0',
+    version='0.1.1',
     description='tool to add transparent pixel to twitter icons to keep as PNG',
     author='Syfaro',
     author_email='syfaro@huefox.com',
